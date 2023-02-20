@@ -1,0 +1,16 @@
+[versions]
+#kotlin = "1.8.20-Beta"
+kotest = "5.5.5"
+kotlin = "1.8.10"
+spotless = "6.15.0"
+versions = "0.45.0"
+
+[libraries]
+kotest-engine = {module = "io.kotest:kotest-framework-engine", version.ref = "kotest"}
+kotest-assertions = {module = "io.kotest:kotest-assertions-core", version.ref = "kotest"}
+
+[bundles]
+[plugins]
+kotlin-multiplatform = {id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin"}
+spotless = {id = "com.diffplug.spotless", version.ref = "spotless"}
+versions = {id = "com.github.ben-manes.versions", version.ref = "spotless"}

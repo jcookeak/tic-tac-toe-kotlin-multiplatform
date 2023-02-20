@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kotlin/Wasm Example</title>
+</head>
+<body>
+<script src="kotlin-kotlin-stdlib-js-ir.js"></script>
+<script src="game.js"></script>
+
+<script>
+    console.log(game.game.greet())
+</script>
+<script>
+    // setup classes from kotlin code
+    let s = new game.game.Outcome.Success(1) // Object { value: 1 }
+    let f = new game.game.Outcome.Failure(2) // Object { reason: 2 }
+
+    // passing functions as input!
+    let handleOutcome = (o) => game.game.fold(o, (s => s + 1), (f => 0))
+
+    // let's use our function
+    console.log('handled s: ' + handleOutcome(s)) // 2
+    console.log('handled f: ' + handleOutcome(f)) // 0
+</script>
+</body>
+</html>
