@@ -11,7 +11,7 @@ private val winningLines = listOf(
     listOf(2, 4, 6),
 )
 
-fun GameMoves.checkWinner(): Player? {
+fun Array<PlayerMove>.checkWinner(): Player? {
     val squares = this.associateBy { it.move }
 
     return winningLines.firstOrNull { line ->
@@ -24,5 +24,3 @@ fun GameMoves.checkWinner(): Player? {
         squares[it.first()]?.player
     }
 }
-
-val GameMoves.gameBoard get() = this.associateBy { it.move }

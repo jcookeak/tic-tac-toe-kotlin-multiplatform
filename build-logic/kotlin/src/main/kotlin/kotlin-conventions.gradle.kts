@@ -1,18 +1,16 @@
 plugins {
+    id("dev.petuska.npm.publish")
     id("org.jetbrains.kotlin.multiplatform")
     id("io.kotest.multiplatform")
     id("com.diffplug.spotless")
     id("com.github.ben-manes.versions")
 }
 
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
-
 group = "dev.jcookeak"
 
 kotlin {
+    jvmToolchain(17)
+
     sourceSets.configureEach {
         languageSettings {
             optIn("kotlin.time.ExperimentalTime")
@@ -20,6 +18,12 @@ kotlin {
             optIn("kotlin.contracts.ExperimentalContracts")
             optIn("kotlin.js.ExperimentalJsExport")
         }
+    }
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
